@@ -34,6 +34,9 @@ const dadosQuiz = [
   },
 ];
 
+let quizAtual = 0;
+let respostasSelecionadas = [];
+
 const perguntaEl = document.querySelector("#pergunta");
 const a = document.querySelector("#a");
 const b = document.querySelector("#b");
@@ -41,14 +44,16 @@ const c = document.querySelector("#c");
 const d = document.querySelector("#d");
 const botao = document.querySelector("#btn");
 
-window.addEventListener("load", () => {
+window.addEventListener("load", carregarQuiz());
+
+function carregarQuiz() {
   //carrega a página com a primeira pergunta
-  perguntaEl.innerText = dadosQuiz[0].pergunta;
-  a.innerText = dadosQuiz[0].a;
-  b.innerText = dadosQuiz[0].b;
-  c.innerText = dadosQuiz[0].c;
-  d.innerText = dadosQuiz[0].d;
-});
+  perguntaEl.innerText = dadosQuiz[quizAtual].pergunta;
+  a.innerText = dadosQuiz[quizAtual].a;
+  b.innerText = dadosQuiz[quizAtual].b;
+  c.innerText = dadosQuiz[quizAtual].c;
+  d.innerText = dadosQuiz[quizAtual].d;
+}
 
 function selecionar() {
   const inputsRadio = document.querySelectorAll(".respostas");
@@ -56,11 +61,29 @@ function selecionar() {
   inputsRadio.forEach((resposta) => {
     //pega o texto do lado do input selecionado
     if (resposta.checked === true) {
-      console.log(resposta.nextElementSibling.innerText);
+      respostasSelecionadas.push(resposta.nextElementSibling.innerText);
+      quizAtual++;
     }
   });
 }
 
+const verificaResposta = () => {
+  //FAZER: fazer com que a opção correta do objeto seja igual á resposta selecionada, atualmente a opção do objeto é "C" e o array é a resposta em texto
+  if (dadosQuiz[quizAtual].correta == respostasSelecionadas[0]) {
+    console.log("deu certo");
+  }
+};
+
 botao.addEventListener("click", () => {
   selecionar();
+
+  if (quizAtual < dadosQuiz.length) {
+    carregarQuiz();
+  } else {
+    alert(respostasSelecionadas);
+  }
+
+  console.log("funcionando");
 });
+
+console.log(dadosQuiz[quizAtual].correta);
