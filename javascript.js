@@ -5,7 +5,7 @@ const dadosQuiz = [
     b: "1970",
     c: "1995",
     d: "1983",
-    correta: "c",
+    correta: "1995",
   },
   {
     pergunta: "Qual o significado da sigla CSS?",
@@ -13,7 +13,7 @@ const dadosQuiz = [
     b: "Hypertext Markup Language",
     c: "JavaScript Object Notation",
     d: "Cab Small Snacks",
-    correta: "a",
+    correta: "Cascading Style Sheets",
   },
   {
     pergunta: "Qual das opções é uma linguagem de programação?",
@@ -21,7 +21,7 @@ const dadosQuiz = [
     b: "C++",
     c: "HTML",
     d: "API",
-    correta: "b",
+    correta: "C++",
   },
   {
     pergunta:
@@ -30,7 +30,23 @@ const dadosQuiz = [
     b: "Fullstack",
     c: "Back-end",
     d: "Nenhuma das anteriores",
-    correta: "a",
+    correta: "Front-end",
+  },
+  {
+    pergunta: "Qual das opções é um framework Back-End?",
+    a: "React",
+    b: "Vue.js",
+    c: "Angular",
+    d: "Django",
+    correta: "Django",
+  },
+  {
+    pergunta: "Qual das opções não é um banco de dados relacional?",
+    a: "MySQL",
+    b: "MongoDB",
+    c: "MariaDB",
+    d: "Nenhuma das anteriores",
+    correta: "MongoDB",
   },
 ];
 
@@ -44,10 +60,9 @@ const c = document.querySelector("#c");
 const d = document.querySelector("#d");
 const botao = document.querySelector("#btn");
 
-window.addEventListener("load", carregarQuiz());
-
 function carregarQuiz() {
-  //carrega a página com a primeira pergunta
+  //carrega a página com a pergunta atual
+
   perguntaEl.innerText = dadosQuiz[quizAtual].pergunta;
   a.innerText = dadosQuiz[quizAtual].a;
   b.innerText = dadosQuiz[quizAtual].b;
@@ -55,11 +70,14 @@ function carregarQuiz() {
   d.innerText = dadosQuiz[quizAtual].d;
 }
 
+window.addEventListener("load", carregarQuiz());
+
 function selecionar() {
+  //armazena o texto do lado do input selecionado em um array
+
   const inputsRadio = document.querySelectorAll(".respostas");
 
   inputsRadio.forEach((resposta) => {
-    //pega o texto do lado do input selecionado
     if (resposta.checked === true) {
       respostasSelecionadas.push(resposta.nextElementSibling.innerText);
       quizAtual++;
@@ -67,11 +85,34 @@ function selecionar() {
   });
 }
 
+let quizCorpo = document.querySelector("#container-quiz");
+
 const verificaResposta = () => {
-  //FAZER: fazer com que a opção correta do objeto seja igual á resposta selecionada, atualmente a opção do objeto é "C" e o array é a resposta em texto
-  if (dadosQuiz[quizAtual].correta == respostasSelecionadas[0]) {
-    console.log("deu certo");
+  //verifica quantas respostas estão certas e mostra ao usuário
+
+  var respostasCorretas = 0;
+
+  if (respostasSelecionadas[0] == dadosQuiz[0].correta) {
+    respostasCorretas++;
   }
+  if (respostasSelecionadas[1] == dadosQuiz[1].correta) {
+    respostasCorretas++;
+  }
+  if (respostasSelecionadas[2] == dadosQuiz[2].correta) {
+    respostasCorretas++;
+  }
+  if (respostasSelecionadas[3] == dadosQuiz[3].correta) {
+    respostasCorretas++;
+  }
+  if (respostasSelecionadas[4] == dadosQuiz[4].correta) {
+    respostasCorretas++;
+  }
+  if (respostasSelecionadas[5] == dadosQuiz[5].correta) {
+    respostasCorretas++;
+  }
+
+  quizCorpo.innerHTML = `<h2>Você acertou ${respostasCorretas} de ${dadosQuiz.length}</h2>
+  <button id="btn" onclick="window.location.reload()">Voltar ao ínicio</button>`;
 };
 
 botao.addEventListener("click", () => {
@@ -79,11 +120,9 @@ botao.addEventListener("click", () => {
 
   if (quizAtual < dadosQuiz.length) {
     carregarQuiz();
+    botao.innerText = "Submit";
   } else {
-    alert(respostasSelecionadas);
+    verificaResposta();
+    quizAtual = -1;
   }
-
-  console.log("funcionando");
 });
-
-console.log(dadosQuiz[quizAtual].correta);
