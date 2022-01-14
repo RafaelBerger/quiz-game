@@ -111,7 +111,8 @@ const verificaResposta = () => {
     respostasCorretas++;
   }
 
-  quizCorpo.innerHTML = `<h2>Você acertou ${respostasCorretas} de ${dadosQuiz.length}</h2>
+  quizCorpo.innerHTML = `<h1>Parabéns você concluiu o Quiz!</h1>
+  <h2>Você acertou ${respostasCorretas} de ${dadosQuiz.length}</h2>
   <button id="btn" onclick="window.location.reload()">Voltar ao ínicio</button>`;
 };
 
