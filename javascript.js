@@ -92,23 +92,10 @@ const verificaResposta = () => {
 
   var respostasCorretas = 0;
 
-  if (respostasSelecionadas[0] == dadosQuiz[0].correta) {
-    respostasCorretas++;
-  }
-  if (respostasSelecionadas[1] == dadosQuiz[1].correta) {
-    respostasCorretas++;
-  }
-  if (respostasSelecionadas[2] == dadosQuiz[2].correta) {
-    respostasCorretas++;
-  }
-  if (respostasSelecionadas[3] == dadosQuiz[3].correta) {
-    respostasCorretas++;
-  }
-  if (respostasSelecionadas[4] == dadosQuiz[4].correta) {
-    respostasCorretas++;
-  }
-  if (respostasSelecionadas[5] == dadosQuiz[5].correta) {
-    respostasCorretas++;
+  for (let index = 0; index < 6; index++) {
+    if (respostasSelecionadas[index] == dadosQuiz[index].correta) {
+      respostasCorretas++;
+    }
   }
 
   quizCorpo.innerHTML = `<h1>Parabéns você concluiu o Quiz!</h1>
