@@ -57,3 +57,10 @@ h1 {
   background-color: purple;
   border: none;
 }
+
+@media (max-width: 780px) {
+  #container-quiz {
+    width: 80%;
+    height: 70vh;
+  }
+}
