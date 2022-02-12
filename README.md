@@ -4,6 +4,13 @@ Jogo Quiz sobre programação.
 
 Projeto criado para exercitar minha lógica de programação.
 
+<div align="left">
+<img src="https://user-images.githubusercontent.com/84355579/153687156-fefb6ccf-8fc0-43ab-a031-646e021b0711.jpg" width="450px" />
+ </div>
+ <div>
+<img src="https://user-images.githubusercontent.com/84355579/153687166-8801ff24-db14-4474-b384-6ba23becc10c.jpg" width="450px" />
+</div>
+
 
 ## Funcionalidades
 
@@ -34,6 +41,13 @@ Projeto criado para exercitar minha lógica de programação.
 Quiz Game about programming.
 
 Project created to exercise my programming logic.
+
+<div align="left">
+<img src="https://user-images.githubusercontent.com/84355579/153687156-fefb6ccf-8fc0-43ab-a031-646e021b0711.jpg" width="450px" />
+ </div>
+ <div>
+<img src="https://user-images.githubusercontent.com/84355579/153687166-8801ff24-db14-4474-b384-6ba23becc10c.jpg" width="450px" />
+</div>
 
 
 ## Functionalities
